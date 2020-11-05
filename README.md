@@ -26,5 +26,5 @@ In this week's assignment, we created a timed coding assesment with multiple-cho
 
 ### URL of Depoloyed Application
 
-:point_right:  (oliva-sam.github.io/bootcamp/homework4)[https://oliva-sam.github.io/bootcamp-homework4/]  :point_left:
+:point_right:  [oliva-sam.github.io/bootcamp/homework4](https://oliva-sam.github.io/bootcamp-homework4/)  :point_left:
 
