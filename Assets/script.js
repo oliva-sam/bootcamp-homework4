@@ -5,8 +5,19 @@ var option1 = document.getElementById("option1")
 var option2 = document.getElementById("option2")
 var option3 = document.getElementById("option3")
 var option4 = document.getElementById("option4")
+var showAnswer = document.getElementById("showAnswer")
+var userScoreArea = document.getElementById("userScoreArea")
+var finalScore = document.getElementById("finalScore")
+var userInitials = document.getElementById("userInitials")
+var saveUserInitials = document.getElementById("saveUserInitials")
+
 var currentQuestion = 0
+var correctAnswer = 0
+var incorrectAnswer = 0
+
 questionsArea.style.display = "none"
+userScoreArea.style.display = "none"
+
 
 var questions = [
 { q: "Commonly used data types DO NOT include:",
@@ -44,4 +55,25 @@ function renderQuestion() {
     option4.textContent = questions[currentQuestion].choices[3]
 }
 
+function checkAnswer(){
+    var userChoice = this.getAttribute("data-value")
+    console.log(userChoice)
+    if (userChoice == questions[currentQuestion].answer){
+        correctAnswer++
+        showAnswer.textContent = "Correct"
+    }
+    else {
+        incorrectAnswer++
+        showAnswer.textContent = "Incorrect"
+    }
+    if (currentQuestion < questions.length -1) {
+        currentQuestion++
+        renderQuestion()
+    }
+}
+
 startButton.addEventListener("click", startQuiz)
+option1.addEventListener("click", checkAnswer)
+option2.addEventListener("click", checkAnswer)
+option3.addEventListener("click", checkAnswer)
+option4.addEventListener("click", checkAnswer)

@@ -41,10 +41,22 @@
             <div class="col-md-4"></div>
             <div class="col-md-4" id="questionsArea">
                 <h4 id="question"></h4>
-                <button class="userChoices" date-value="0" id="option1"></button>
-                <button class="userChoices" date-value="1" id="option2"></button>
-                <button class="userChoices" date-value="2" id="option3"></button>
-                <button class="userChoices" date-value="3" id="option4"></button>
+                <button class="userChoices" data-value="0" id="option1"></button>
+                <button class="userChoices" data-value="1" id="option2"></button>
+                <button class="userChoices" data-value="2" id="option3"></button>
+                <button class="userChoices" data-value="3" id="option4"></button>
+                <p id="showAnswer"></p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class ="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" id="userScore">
+                <h4>All Done!</h4>
+                <h3 id="finalScore">Your final Score is: </h3>
+                <h5>Enter User Initials:</h5>
+                <input type="text" id="userInitials">
+                <button id="saveUserInitials">Save Initials</button>
             </div>
             <div class="col-md-4"></div>
         </div>
