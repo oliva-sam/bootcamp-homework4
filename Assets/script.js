@@ -70,6 +70,11 @@ function checkAnswer(){
         currentQuestion++
         renderQuestion()
     }
+    else {
+        questionsArea.style.display = "none"
+        userScoreArea.style.display = "block"
+        finalScore.textContent = "Your final score is: " + correctAnswer 
+    }
 }
 
 startButton.addEventListener("click", startQuiz)
