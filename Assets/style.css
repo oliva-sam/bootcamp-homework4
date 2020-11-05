@@ -1,0 +1,22 @@
+body {
+    background-color:#659dbd;
+}
+
+p {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+#timer {
+    text-align: right;
+}
+
+#quizArea {
+    text-align: center;
+}
+
+button {
+    background-color: #e8a87c;
+    color: #ffffff;
+    border-radius: 4px;
+}
