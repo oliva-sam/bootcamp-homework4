@@ -11,7 +11,7 @@ p {
     text-align: right;
 }
 
-#quizArea {
+#quizArea, #userScoreArea, #questionsArea {
     text-align: center;
 }
 
@@ -19,4 +19,5 @@ button {
     background-color: #e8a87c;
     color: #ffffff;
     border-radius: 4px;
+    margin: 2px;
 }

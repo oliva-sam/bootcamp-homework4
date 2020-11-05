@@ -1,4 +1,5 @@
 var startButton = document.getElementById("startbutton")
+var quizArea = document.getElementById("quizArea")
 var questionsArea = document.getElementById("questionsArea")
 var question = document.getElementById("question")
 var option1 = document.getElementById("option1")
@@ -20,19 +21,19 @@ userScoreArea.style.display = "none"
 
 
 var questions = [
-{ q: "Commonly used data types DO NOT include:",
+{q: "Commonly used data types DO NOT include:",
 choices: ["strings","booleans","alerts","numbers"],
 answer:2
 },
-{q: "The condition in an if / else statement is enclosed within?",
+{q: "The condition in an if / else statement is enclosed within",
 choices: ["quotes", "curly brackets", "paranthesis", "square brackets"],
 answer: 2
 },
-{q: "Arrays in JS can be used to store _______.",
+{q: "Arrays in JS can be used to store ___________.",
 choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
 answer: 3
 },
-{q: "String values must be enclosed within _____, when being assigned to variables",
+{q: "String values must be enclosed within _________, when being assigned to variables.",
 choices: ["commas", "curly brackets", "quotes", "paranthesis"],
 answer: 2
 },
@@ -42,7 +43,7 @@ answer: 3
 }]
 
 function startQuiz() {
-    startButton.style.display = "none"
+    quizArea.style.display = "none"
     questionsArea.style.display = "block"
     renderQuestion()
 }
@@ -60,7 +61,7 @@ function checkAnswer(){
     console.log(userChoice)
     if (userChoice == questions[currentQuestion].answer){
         correctAnswer++
-        showAnswer.textContent = "Correct"
+        showAnswer.textContent = "Correct!"
     }
     else {
         incorrectAnswer++
@@ -73,7 +74,7 @@ function checkAnswer(){
     else {
         questionsArea.style.display = "none"
         userScoreArea.style.display = "block"
-        finalScore.textContent = "Your final score is: " + correctAnswer 
+        finalScore.textContent = "Your final score is: " + correctAnswer + " out of 5"
     }
 }
 
