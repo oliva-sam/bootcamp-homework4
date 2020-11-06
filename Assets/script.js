@@ -61,7 +61,7 @@ function checkAnswer(){
     console.log(userChoice)
     if (userChoice == questions[currentQuestion].answer){
         correctAnswer++
-        showAnswer.textContent = "Correct!"
+        showAnswer.textContent = "✨Correct!✨"
     }
     else {
         incorrectAnswer++
