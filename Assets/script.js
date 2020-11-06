@@ -10,11 +10,11 @@ var option4 = document.getElementById("option4");
 var showAnswer = document.getElementById("showAnswer");
 var userScoreArea = document.getElementById("userScoreArea");
 var finalScore = document.getElementById("finalScore");
-var userInitials = document.getElementById("userInitials");
+// var userInitials = document.getElementById("userInitials").value;
 var saveUserInitials = document.getElementById("saveUserInitials");
 var highScoreArea = document.getElementById("highScoreArea");
 var highScoreList = document.getElementById("highScoreList");
-var resetQuizButton = document.getElementById("resetQuizButton");
+var goBackButton = document.getElementById("goBackButton");
 var clearScoresButton = document.getElementById("clearScoresButton");
 
 var currentQuestion = 0;
@@ -27,23 +27,23 @@ highScoreArea.style.display = "none";
 
 var questions = [
 {q: "Commonly used data types DO NOT include:",
-choices: ["strings","booleans","alerts","numbers"],
+choices: ["1. strings","2. booleans","3. alerts","4. numbers"],
 answer:2
 },
 {q: "The condition in an if / else statement is enclosed within",
-choices: ["quotes", "curly brackets", "paranthesis", "square brackets"],
+choices: ["1. quotes", "2. curly brackets", "3. paranthesis", "4. square brackets"],
 answer: 2
 },
 {q: "Arrays in JS can be used to store ___________.",
-choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+choices: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
 answer: 3
 },
 {q: "String values must be enclosed within _________, when being assigned to variables.",
-choices: ["commas", "curly brackets", "quotes", "paranthesis"],
+choices: ["1. commas", "2. curly brackets", "3. quotes", "4. paranthesis"],
 answer: 2
 },
 {q: "A very useful tool used during development and debugging for printing content to the debugger is:",
-choices: ["JavaScript", "terminal/git bash", "for loops", "console log"],
+choices: ["1. JavaScript", "2. terminal/git bash", "3. for loops", "4. console log"],
 answer: 3
 }]
 
@@ -87,9 +87,18 @@ function checkAnswer(){
 function savingInitials(){
     userScoreArea.style.display = "none"
     highScoreArea.style.display = "block"
-    var highScoreInitialsEl = document.createElement("li")
-    highScoreInitialsEl.appendChild(userInitials)
-    highScoreList.appendChild(highScoreInitialsEl)
+    var li = document.createElement("li")
+    var userInitials = document.getElementById("userInitials").value;
+    var userI = document.createTextNode(userInitials)
+    console.log(userI)
+    li.appendChild(userI)
+ //  li.textContent = userI + " - " + correctAnswer 
+    
+    if (userInitials === '') {
+        alert("You must write something!");
+    } else {
+        highScoreList.appendChild(li);
+    }
 }
 
 function viewHighScores() {
@@ -107,4 +116,4 @@ option2.addEventListener("click", checkAnswer)
 option3.addEventListener("click", checkAnswer)
 option4.addEventListener("click", checkAnswer)
 saveUserInitials.addEventListener("click", savingInitials)
-//resetQuizButton.addEventListener("click", startQuiz)
+//goBackButton.addEventListener("click", function here)
