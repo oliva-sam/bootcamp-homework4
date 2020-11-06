@@ -21,3 +21,7 @@ button {
     border-radius: 4px;
     margin: 2px;
 }
+
+#highScoreList {
+    background-color: #ffddcc;
+}
