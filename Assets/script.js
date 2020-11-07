@@ -11,7 +11,6 @@ var option4 = document.getElementById("option4");
 var showAnswer = document.getElementById("showAnswer");
 var userScoreArea = document.getElementById("userScoreArea");
 var finalScore = document.getElementById("finalScore");
-// var userInitials = document.getElementById("userInitials").value;
 var saveUserInitials = document.getElementById("saveUserInitials");
 var highScoreArea = document.getElementById("highScoreArea");
 var highScoreList = document.getElementById("highScoreList");
@@ -19,6 +18,7 @@ var goBackButton = document.getElementById("goBackButton");
 var clearScoresButton = document.getElementById("clearScoresButton");
 
 var secondsRemaining = 75;
+var timerInterval = "";
 
 var currentQuestion = 0;
 var correctAnswer = 0;
@@ -56,7 +56,7 @@ function startQuiz() {
     highScoreArea.style.display = "none"
     questionsArea.style.display = "block"
 
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         timer.textContent = "Time: " + secondsRemaining;
         secondsRemaining--;
 
@@ -105,7 +105,10 @@ function savingInitials(){
     highScoreArea.style.display = "block"
     var li = document.createElement("li")
     var userInitials = document.getElementById("userInitials").value;
-   
+
+    clearInterval(timerInterval);
+    timer.textContent = "Time: 0";
+  
     if (userInitials === '') {
         alert("You must write something!");
         userScoreArea.style.display = "block"
@@ -122,7 +125,7 @@ function viewHighScores() {
     userScoreArea.style.display = "none"
     questionsArea.style.display = "none"
     highScoreArea.style.display = "block"
-    clearInterval(secondsRemaining);
+    clearInterval(timerInterval);
     timer.textContent = "Time: 0"
 }
 
@@ -134,9 +137,5 @@ option2.addEventListener("click", checkAnswer)
 option3.addEventListener("click", checkAnswer)
 option4.addEventListener("click", checkAnswer)
 saveUserInitials.addEventListener("click", savingInitials)
-saveUserInitials.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-      // code for enter
-    }
-});
+
 //goBackButton.addEventListener("click", function here)
