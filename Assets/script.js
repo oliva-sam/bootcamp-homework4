@@ -1,4 +1,5 @@
 var highScores = document.getElementById("highscores");
+var timer = document.getElementById("timer")
 var startButton = document.getElementById("startbutton");
 var quizArea = document.getElementById("quizArea");
 var questionsArea = document.getElementById("questionsArea");
@@ -16,6 +17,8 @@ var highScoreArea = document.getElementById("highScoreArea");
 var highScoreList = document.getElementById("highScoreList");
 var goBackButton = document.getElementById("goBackButton");
 var clearScoresButton = document.getElementById("clearScoresButton");
+
+var secondsRemaining = 75;
 
 var currentQuestion = 0;
 var correctAnswer = 0;
@@ -52,6 +55,17 @@ function startQuiz() {
     userScoreArea.style.display = "none"
     highScoreArea.style.display = "none"
     questionsArea.style.display = "block"
+
+    var timerInterval = setInterval(function() {
+        timer.textContent = "Time: " + secondsRemaining;
+        secondsRemaining--;
+
+        if (secondsRemaining <= 0) {
+            clearInterval(timerInterval);
+            timer.textContent = "Time: 0"
+        }
+    }, 800) 
+
     renderQuestion()
 }
 
@@ -67,10 +81,12 @@ function checkAnswer(){
     var userChoice = this.getAttribute("data-value")
     if (userChoice == questions[currentQuestion].answer){
         correctAnswer++
+        secondsRemaining +=5
         showAnswer.textContent = "✨Correct!✨"
     }
     else {
         incorrectAnswer++
+        secondsRemaining -=10
         showAnswer.textContent = "Incorrect"
     }
     if (currentQuestion < questions.length -1) {
@@ -89,19 +105,16 @@ function savingInitials(){
     highScoreArea.style.display = "block"
     var li = document.createElement("li")
     var userInitials = document.getElementById("userInitials").value;
-    var userI = document.createTextNode(userInitials)
     var userIniialsString = JSON.stringify(userInitials)
-    console.log(userI)
-    li.appendChild(userI)
-    console.log(userIniialsString + " - " + correctAnswer)
-
- //   li.appendChild(userI + " - " + correctAnswer)
- //  li.textContent = userI + " - " + correctAnswer 
-    
+   
     if (userInitials === '') {
         alert("You must write something!");
+        userScoreArea.style.display = "block"
+        highScoreArea.style.display = "none"
     } else {
         highScoreList.appendChild(li);
+        li.innerHTML = userIniialsString + " - " + correctAnswer
+
     }
 }
 
@@ -110,6 +123,8 @@ function viewHighScores() {
     userScoreArea.style.display = "none"
     questionsArea.style.display = "none"
     highScoreArea.style.display = "block"
+    clearInterval(secondsRemaining);
+    timer.textContent = "Time: 0"
 }
 
 
@@ -120,4 +135,9 @@ option2.addEventListener("click", checkAnswer)
 option3.addEventListener("click", checkAnswer)
 option4.addEventListener("click", checkAnswer)
 saveUserInitials.addEventListener("click", savingInitials)
+saveUserInitials.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      // code for enter
+    }
+});
 //goBackButton.addEventListener("click", function here)
