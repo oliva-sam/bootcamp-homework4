@@ -64,7 +64,7 @@ function startQuiz() {
             clearInterval(timerInterval);
             timer.textContent = "Time: 0"
         }
-    }, 800) 
+    }, 500) 
 
     renderQuestion()
 }
@@ -79,9 +79,12 @@ function renderQuestion() {
 
 function checkAnswer(){
     var userChoice = this.getAttribute("data-value")
+    var hr = document.createElement("HR")
+
     if (userChoice == questions[currentQuestion].answer){
         correctAnswer++
         secondsRemaining +=5
+       // showAnswer.appendChild(hr)
         showAnswer.textContent = "✨Correct!✨"
     }
     else {
