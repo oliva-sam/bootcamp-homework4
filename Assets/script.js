@@ -90,8 +90,12 @@ function savingInitials(){
     var li = document.createElement("li")
     var userInitials = document.getElementById("userInitials").value;
     var userI = document.createTextNode(userInitials)
+    var userIniialsString = JSON.stringify(userInitials)
     console.log(userI)
     li.appendChild(userI)
+    console.log(userIniialsString + " - " + correctAnswer)
+
+ //   li.appendChild(userI + " - " + correctAnswer)
  //  li.textContent = userI + " - " + correctAnswer 
     
     if (userInitials === '') {
