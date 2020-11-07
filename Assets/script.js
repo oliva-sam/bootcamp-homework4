@@ -105,7 +105,6 @@ function savingInitials(){
     highScoreArea.style.display = "block"
     var li = document.createElement("li")
     var userInitials = document.getElementById("userInitials").value;
-    var userIniialsString = JSON.stringify(userInitials)
    
     if (userInitials === '') {
         alert("You must write something!");
@@ -113,7 +112,7 @@ function savingInitials(){
         highScoreArea.style.display = "none"
     } else {
         highScoreList.appendChild(li);
-        li.innerHTML = userIniialsString + " - " + correctAnswer
+        li.innerHTML = userInitials + " - " + correctAnswer
 
     }
 }
