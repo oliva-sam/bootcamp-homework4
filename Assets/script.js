@@ -55,6 +55,7 @@ function startQuiz() {
     userScoreArea.style.display = "none"
     highScoreArea.style.display = "none"
     questionsArea.style.display = "block"
+    showAnswer.textContent = ""
 
     timerInterval = setInterval(function() {
         timer.textContent = "Time: " + secondsRemaining;
@@ -63,6 +64,7 @@ function startQuiz() {
         if (secondsRemaining <= 0) {
             clearInterval(timerInterval);
             timer.textContent = "Time: 0"
+            savingInitials()
         }
     }, 500) 
 
@@ -81,6 +83,7 @@ function checkAnswer(){
     var userChoice = this.getAttribute("data-value")
     var hr = document.createElement("HR")
 
+    
     if (userChoice == questions[currentQuestion].answer){
         correctAnswer++
         secondsRemaining +=5
@@ -107,6 +110,7 @@ function checkAnswer(){
 
 function savingInitials(){
     userScoreArea.style.display = "none"
+    questionsArea.style.display = "none"
     highScoreArea.style.display = "block"
     var li = document.createElement("li")
     var userInitials = document.getElementById("userInitials").value;
@@ -122,11 +126,12 @@ function savingInitials(){
     } else {
         highScoreList.appendChild(li);
         li.innerHTML = userInitials + " - " + correctAnswer + " out of 5"
-
+       // highScoreList.innerHTML = localStorage.getItem("userInitials") + " - " + localStorage.getItem("correctAnswer")
+        
+        localStorage.setItem("userInitials", userInitials)
+        localStorage.setItem("correctAnswer", correctAnswer)
     }
 
-    localStorage.setItem("userInitials", userInitials)
-    localStorage.setItem("correctAnswer", correctAnswer)
 
 }
 
@@ -137,16 +142,22 @@ function viewHighScores() {
     highScoreArea.style.display = "block"
     clearInterval(timerInterval);
     timer.textContent = "Time: 0"
-    highscorelist.textContent = localStorage.getItem("userInitials") + " - " + localStorage.getItem("correctAnswer")
+}
+
+function clearHighScores() {
+    localStorage.clear()
+    highScoreList.textContent = ""
 }
 
 
-highScores.addEventListener("click", viewHighScores)
-startButton.addEventListener("click", startQuiz)
-option1.addEventListener("click", checkAnswer)
-option2.addEventListener("click", checkAnswer)
-option3.addEventListener("click", checkAnswer)
-option4.addEventListener("click", checkAnswer)
-saveUserInitials.addEventListener("click", savingInitials)
-
-//goBackButton.addEventListener("click", function here)
+highScores.addEventListener("click", viewHighScores);
+startButton.addEventListener("click", startQuiz);
+option1.addEventListener("click", checkAnswer);
+option2.addEventListener("click", checkAnswer);
+option3.addEventListener("click", checkAnswer);
+option4.addEventListener("click", checkAnswer);
+saveUserInitials.addEventListener("click", savingInitials);
+goBackButton.addEventListener("click", function () {
+    location.reload();
+});
+clearScoresButton.addEventListener("click", clearHighScores)
