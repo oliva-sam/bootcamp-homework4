@@ -99,6 +99,8 @@ function checkAnswer(){
     else {
         questionsArea.style.display = "none"
         userScoreArea.style.display = "block"
+        clearInterval(timerInterval);
+        timer.textContent = "Time: 0";
         finalScore.textContent = "Your final score is: " + correctAnswer + " out of 5"
     }
 }
@@ -108,6 +110,7 @@ function savingInitials(){
     highScoreArea.style.display = "block"
     var li = document.createElement("li")
     var userInitials = document.getElementById("userInitials").value;
+    
 
     clearInterval(timerInterval);
     timer.textContent = "Time: 0";
@@ -118,9 +121,13 @@ function savingInitials(){
         highScoreArea.style.display = "none"
     } else {
         highScoreList.appendChild(li);
-        li.innerHTML = userInitials + " - " + correctAnswer
+        li.innerHTML = userInitials + " - " + correctAnswer + " out of 5"
 
     }
+
+    localStorage.setItem("userInitials", userInitials)
+    localStorage.setItem("correctAnswer", correctAnswer)
+
 }
 
 function viewHighScores() {
@@ -130,6 +137,7 @@ function viewHighScores() {
     highScoreArea.style.display = "block"
     clearInterval(timerInterval);
     timer.textContent = "Time: 0"
+    highscorelist.textContent = localStorage.getItem("userInitials") + " - " + localStorage.getItem("correctAnswer")
 }
 
 
