@@ -1,27 +1,27 @@
-# 04 Web APIs: Code Quiz
-UTSA Coding Bootcamp Homework 4
+# Web APIs: Timed Code Quiz
 
-In this week's assignment, we created a timed coding assesment with multiple-choice questions and interactive coding challenges similar to what we will face in "real-world" interviews. 
+Users are able to take a timed coding assesment with multiple-choice questions that reveals if the options they choose is correct or not. 
 
-## Skills Used:
+## Quiz contains:
 ```
-- 
-- 
-- 
-- 
+- 5 questions 
+- 75 "second" timer
+- Highscores Page
 ```
 
-## Challenges Overcomed:
+## Quiz difficulties
 ```
-- 
-- 
-- 
-- 
+- the timer doesn't actually decrease by a "second", the timer decreases by half a second
+- if the user gueses incorrectly, the time will decrease by 10 "seconds" HOWEVER if the uses guesses correctly the time increases by 5 "seconds"
 ```
 
-## Comparison between Actual vs. Mock-UP
+## Mock-Example vs. Actual
 
+#### Mock-Example
+![example-gif](./Assets/04-web-apis-homework-demo.gif)
 
+#### Actual
+![example-gif](./Assets/oliva-sam-coding-quiz-demo.gif)
 
 
 ### URL of Depoloyed Application
