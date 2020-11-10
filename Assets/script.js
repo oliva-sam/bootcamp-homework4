@@ -133,7 +133,6 @@ function savingInitials(){
     userScoreArea.style.display = "none"
     questionsArea.style.display = "none"
     highScoreArea.style.display = "block"
-    var li = document.createElement("li")
     var userInitials = document.getElementById("userInitials").value;
     
 // to stop the timer. I don't want the timer to keep going while the final score is displayed
@@ -145,12 +144,16 @@ function savingInitials(){
         userScoreArea.style.display = "block"
         highScoreArea.style.display = "none"
     } else {
-        highScoreList.appendChild(li);
-        li.innerHTML = userInitials + " - " + correctAnswer + " out of 5"
+ //       highScoreList.appendChild(li);
+  //      li.innerHTML = userInitials + " - " + correctAnswer + " out of 5"
        // highScoreList.innerHTML = localStorage.getItem("userInitials") + " - " + localStorage.getItem("correctAnswer") <-- attempt to do local storage :'(
-    
-        localStorage.setItem("userInitials", userInitials)
-        localStorage.setItem("correctAnswer", correctAnswer)
+        var userInfo = JSON.parse(localStorage.getItem("userInfo")) || []
+        userInfo.push( {
+            "user" : userInitials,
+            "score" : correctAnswer
+        })
+        localStorage.setItem("userInfo", JSON.stringify(userInfo))
+        viewHighScores ()
     }
 
 }
@@ -161,7 +164,13 @@ function viewHighScores() {
     questionsArea.style.display = "none"
     highScoreArea.style.display = "block"
     clearInterval(timerInterval);
-    timer.textContent = "Time: 0"
+    timer.textContent = "Time: 0";
+    var userInfo = JSON.parse(localStorage.getItem("userInfo")) || []
+    for (let i = 0; i < userInfo.length; i++) {
+        var li = document.createElement("li")
+        highScoreList.appendChild(li);
+        li.innerHTML = userInfo[i].user + " - " + userInfo[i].score + " out of 5"
+      }
 }
 
 function clearHighScores() {

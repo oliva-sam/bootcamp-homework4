@@ -27,3 +27,7 @@ button {
 #highScoreList {
     background-color: #ffddcc;
 }
+
+li {
+    background-color: rgb(87, 23, 34);
+}
